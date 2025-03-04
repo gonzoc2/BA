@@ -6,4 +6,4 @@ numpy>=1.26
 setuptools>=58.0.4
 wheel
 pip==25.0.1
-import locale
+locale
