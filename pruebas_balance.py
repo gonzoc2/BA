@@ -129,7 +129,7 @@ egreso_actual = egreso_actual['Neto'].sum()
 df_fecha = df_fecha.drop(columns=['Año', 'Mes', 'Cuenta', 'Saldo inicial', 'Débito', 'Crédito', 'nombre cuenta'])
 df_fecha = df_fecha.groupby(['Categoria'], as_index=False).sum(numeric_only=True)
 
-fecha_r = f'{mes} de {año}'
+fecha_r = f'{mes} {año}'
 fecha_esf = f'ESTADO DE SITUACION FIANCIERA {mes} {año}'
 df_fecha.loc[len(df_fecha)] = ['nombre', emp]
 df_fecha.loc[len(df_fecha)] = ['fecha_r', fecha_r]
