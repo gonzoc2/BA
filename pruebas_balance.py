@@ -26,10 +26,7 @@ columnas_utiles = ['DEFAULT_EFFECTIVE_DATE', 'DESC_SEGMENT1', 'SEGMENT5', 'DEBIT
 df_wh = df_wh[columnas_utiles]
 df_wh.columns = ['Fecha', 'Empresa', 'Cuenta', 'Débito', 'Crédito']
 df = df_wh.copy()
-try:
-    locale.setlocale(locale.LC_TIME, locale.getdefaultlocale())
-except locale.Error:
-    locale.setlocale(locale.LC_TIME, 'C') 
+
 
 # Optimización de tipos de datos
 df['Fecha'] = pd.to_datetime(df['Fecha'], errors='coerce')  # Convertir a datetime
@@ -39,7 +36,7 @@ df['Crédito'] = pd.to_numeric(df['Crédito'], errors='coerce', downcast='float'
 
 # Extraer mes y año de manera eficiente
 df['Año'] = df['Fecha'].dt.year
-locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+
 df['Mes'] = df['Fecha'].dt.strftime('%B')  # Convertir a nombre del mes en español
 
 df.drop(columns=['Fecha'], inplace=True)
@@ -67,8 +64,8 @@ df_fecha = df_fecha.drop(columns=['Empresa'])
 df_fecha = df_fecha.groupby(['Año', 'Mes', 'Cuenta', 'nombre cuenta', 'Categoria'], as_index=False).sum(numeric_only=True)
 #datos antes de fecha elegida
 meses_dict = {
-"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
-"julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12
+"ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4, "MAYO": 5, "JUNIO": 6,
+"JULIO": 7, "AGOSTO": 8, "SEPTIEMBRE": 9, "OCTUBRE": 10, "NOVIEMBRE": 11, "DICIEMBRE": 12
 }
 mes_num = meses_dict.get(mes)
 df["Mes_Num"] = df["Mes"].map(meses_dict)
@@ -175,5 +172,4 @@ st.download_button(
     file_name=f"balance_{mes}_{año}.xlsx",
     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 )   
-
 
