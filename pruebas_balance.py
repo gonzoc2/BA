@@ -23,6 +23,7 @@ df_wh = cargar_datos(base_wh)
 # Título de la app
 st.title("Balance de comprobación ESGARI")
 columnas_utiles = ['DEFAULT_EFFECTIVE_DATE', 'DESC_SEGMENT1', 'SEGMENT5', 'DEBIT', 'CREDIT']
+df_wh = df_wh[columnas_utiles]
 df_wh.columns = ['Fecha', 'Empresa', 'Cuenta', 'Débito', 'Crédito']
 df = df_wh.copy()
 try:
