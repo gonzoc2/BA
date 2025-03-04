@@ -6,6 +6,7 @@ import numpy as np
 import locale
 from openpyxl import load_workbook
 
+locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 # URL del archivo de mapeo
 mapeo_url = 'https://docs.google.com/spreadsheets/d/1rt6Suyg1XgFxV0nTgblSkfZakzHrPNci/export?format=xlsx'
 excel =  'https://docs.google.com/spreadsheets/d/1MevamCHCwCs0lvSJdbYmH1sCOqDeYpXu/export?format=xlsx'
