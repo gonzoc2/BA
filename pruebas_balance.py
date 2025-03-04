@@ -36,8 +36,12 @@ df['Crédito'] = pd.to_numeric(df['Crédito'], errors='coerce', downcast='float'
 
 # Extraer mes y año de manera eficiente
 df['Año'] = df['Fecha'].dt.year
-
-df['Mes'] = df['Fecha'].dt.strftime('%B')  # Convertir a nombre del mes en español
+meses_ingles_espanol = {
+    'January': 'Enero', 'February': 'Febrero', 'March': 'Marzo', 'April': 'Abril',
+    'May': 'Mayo', 'June': 'Junio', 'July': 'Julio', 'August': 'Agosto',
+    'September': 'Septiembre', 'October': 'Octubre', 'November': 'Noviembre', 'December': 'Diciembre'
+}
+df['Mes'] = df['Fecha'].dt.strftime('%B').map(meses_ingles_espanol)
 
 df.drop(columns=['Fecha'], inplace=True)
 
